@@ -4,6 +4,7 @@ import { NavBar } from '../NavBar';
 import { Masthead } from './Masthead';
 import { Features } from './Features';
 import { PageWrapper } from 'app/components/PageWrapper';
+import { GithubRepoForm } from 'app/containers/GithubRepoForm';
 
 export function HomePage() {
   return (
@@ -19,6 +20,7 @@ export function HomePage() {
       <PageWrapper>
         <Masthead />
         <Features />
+        <GithubRepoForm />
       </PageWrapper>
     </>
   );

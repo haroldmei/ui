@@ -1,5 +1,5 @@
 import { call, put, select, takeLatest, delay } from 'redux-saga/effects';
-import { request } from 'utils/request';
+import { request, postData } from 'utils/request';
 import { selectUsername } from './selectors';
 import { actions } from './slice';
 import { Repo } from 'types/Repo';
@@ -37,6 +37,13 @@ export function* getRepos() {
   }
 }
 
+export function* getForms() {
+  yield delay(500);
+  const engineURL = `http://192.168.0.8:5000/engine`;
+
+  const obj = yield call(postData, engineURL, { answer: '42' });
+  console.log(obj);
+}
 /**
  * Root saga manages watcher lifecycle
  */

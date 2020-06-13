@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useInjectReducer, useInjectSaga } from 'utils/redux-injectors';
 import { FormLabel } from 'app/components/FormLabel';
 import { Input } from './components/Input';
-import { RepoItem } from './RepoItem';
+import { ReposList } from './ReposList';
 import { TextButton } from './components/TextButton';
 import { sliceKey, reducer, actions } from './slice';
 import { githubRepoFormSaga } from './saga';
@@ -15,16 +15,13 @@ import {
   selectError,
 } from './selectors';
 import { LoadingIndicator } from 'app/components/LoadingIndicator';
-import { RepoErrorType } from './types';
 
 export function GithubRepoForm() {
   useInjectReducer({ key: sliceKey, reducer: reducer });
   useInjectSaga({ key: sliceKey, saga: githubRepoFormSaga });
 
   const username = useSelector(selectUsername);
-  const repos = useSelector(selectRepos);
   const isLoading = useSelector(selectLoading);
-  const error = useSelector(selectError);
 
   const dispatch = useDispatch();
 
@@ -64,38 +61,10 @@ export function GithubRepoForm() {
           {isLoading && <LoadingIndicator small />}
         </InputWrapper>
       </FormGroup>
-      {repos?.length > 0 ? (
-        <List>
-          {repos.map(repo => (
-            <RepoItem
-              key={repo.id}
-              name={repo.name}
-              starCount={repo.stargazers_count}
-              url={repo.html_url}
-            />
-          ))}
-        </List>
-      ) : error ? (
-        <ErrorText>{repoErrorText(error)}</ErrorText>
-      ) : null}
+      <ReposList />
     </Wrapper>
   );
 }
-
-export const repoErrorText = (error: RepoErrorType) => {
-  switch (error) {
-    case RepoErrorType.USER_NOT_FOUND:
-      return 'There is no such user 😞';
-    case RepoErrorType.USERNAME_EMPTY:
-      return 'Type any Github username';
-    case RepoErrorType.USER_HAS_NO_REPO:
-      return 'User has no repository 🥺';
-    case RepoErrorType.GITHUB_RATE_LIMIT:
-      return 'Looks like github api`s rate limit(60 request/h) has exceeded 🤔';
-    default:
-      return 'An error has occurred!';
-  }
-};
 
 const Wrapper = styled.div`
   ${TextButton} {
@@ -114,10 +83,6 @@ const InputWrapper = styled.div`
   }
 `;
 
-const ErrorText = styled.span`
-  color: ${p => p.theme.text};
-`;
-
 const FormGroup = styled.form`
   display: flex;
   flex-direction: column;
@@ -128,5 +93,3 @@ const FormGroup = styled.form`
     margin-left: 0.125rem;
   }
 `;
-
-const List = styled.div``;
