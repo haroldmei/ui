@@ -13,39 +13,38 @@
 
 import { PayloadAction } from '@reduxjs/toolkit';
 import { createSlice } from 'utils/@reduxjs/toolkit';
-import { ContainerState, RepoErrorType } from './types';
-import { Repo } from 'types/Repo';
+import { DynamicState, KnotErrorType } from './types';
+import { State } from 'types/State';
+import { Knot } from 'types/Knot';
 
 // The initial state of the GithubRepoForm container
-export const initialState: ContainerState = {
-  username: 'haroldmei',
-  repositories: [],
+export const initialState: DynamicState = {
+  id: 'root',
+  states: [],
   loading: false,
   error: null,
 };
 
-const githubRepoFormSlice = createSlice({
-  name: 'githubRepoForm',
+const dynamicFormSlice = createSlice({
+  name: 'dynamicForm',
   initialState,
   reducers: {
-    changeUsername(state, action: PayloadAction<string>) {
-      state.username = action.payload;
-    },
-    loadRepos(state) {
+    loadKnot(state) {
       state.loading = true;
       state.error = null;
-      state.repositories = [];
+      state.states = [];
     },
-    reposLoaded(state, action: PayloadAction<Repo[]>) {
-      const repos = action.payload;
-      state.repositories = repos;
+    knotLoaded(state, action: PayloadAction<Knot>) {
+      const knot = action.payload;
+      state.states = knot.states;
+      state.id = knot.id;
       state.loading = false;
     },
-    repoError(state, action: PayloadAction<RepoErrorType>) {
+    knotError(state, action: PayloadAction<KnotErrorType>) {
       state.error = action.payload;
       state.loading = false;
     },
   },
 });
 
-export const { actions, reducer, name: sliceKey } = githubRepoFormSlice;
+export const { actions, reducer, name: sliceKey } = dynamicFormSlice;

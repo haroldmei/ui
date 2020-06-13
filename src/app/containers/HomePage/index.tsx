@@ -5,6 +5,7 @@ import { Masthead } from './Masthead';
 import { Features } from './Features';
 import { PageWrapper } from 'app/components/PageWrapper';
 import { GithubRepoForm } from 'app/containers/GithubRepoForm';
+import { DynamicForm } from 'app/containers/DynamicForm';
 
 export function HomePage() {
   return (
@@ -18,9 +19,9 @@ export function HomePage() {
       </Helmet>
       <NavBar />
       <PageWrapper>
-        <Masthead />
-        <Features />
-        <GithubRepoForm />
+        {/*<Masthead />
+        <Features />*/}
+        <DynamicForm />
       </PageWrapper>
     </>
   );
