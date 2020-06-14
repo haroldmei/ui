@@ -19,9 +19,9 @@ export function HomePage() {
       </Helmet>
       <NavBar />
       <PageWrapper>
+        <DynamicForm />
         {/*<Masthead />
         <Features />*/}
-        <DynamicForm />
       </PageWrapper>
     </>
   );

@@ -1,10 +1,8 @@
-import { call, put, select, takeLatest, delay } from 'redux-saga/effects';
-import { request, postData } from 'utils/request';
+import { call, put, takeLatest, delay } from 'redux-saga/effects';
+import { postData } from 'utils/request';
 
 import { actions } from './slice';
-import { State } from 'types/State';
 import { Knot } from 'types/Knot';
-import { KnotErrorType } from './types';
 
 export function* getForms() {
   yield delay(500);
@@ -13,6 +11,7 @@ export function* getForms() {
   try {
     // Call our request helper (see 'utils/request')
     const knot: Knot = yield call(postData, engineURL, { answer: '42' });
+    console.log('==============KNOT================');
     console.log(knot);
     yield put(actions.knotLoaded(knot));
   } catch (err) {}

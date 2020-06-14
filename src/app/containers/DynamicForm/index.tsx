@@ -1,27 +1,23 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components/macro';
-import { SubTitle } from 'app/containers/HomePage/components/SubTitle';
-import { useSelector, useDispatch } from 'react-redux';
+//import { SubTitle } from 'app/containers/HomePage/components/SubTitle';
+import { useDispatch } from 'react-redux';
 import { useInjectReducer, useInjectSaga } from 'utils/redux-injectors';
 import { sliceKey, reducer, actions } from './slice';
 import { dynamicFormSaga } from './saga';
 
 import { FormLabel } from 'app/components/FormLabel';
 
-import { Input } from './components/Input';
+//import { Input } from './components/Input';
 import { TextButton } from './components/TextButton';
-import { RadioButton } from './RadioButton';
-import { LoadingIndicator } from 'app/components/LoadingIndicator';
+import { StateList } from './StateList';
+//import { LoadingIndicator } from 'app/components/LoadingIndicator';
 
 export function DynamicForm() {
   useInjectReducer({ key: sliceKey, reducer: reducer });
   useInjectSaga({ key: sliceKey, saga: dynamicFormSaga });
 
   const dispatch = useDispatch();
-
-  const onChangeState = (evt: React.ChangeEvent<HTMLInputElement>) => {
-    dispatch(actions.loadKnot());
-  };
 
   const useEffectOnMount = (effect: React.EffectCallback) => {
     useEffect(effect, []);
@@ -40,8 +36,8 @@ export function DynamicForm() {
   return (
     <Wrapper>
       <FormGroup onSubmit={onSubmitForm}></FormGroup>
-      <SubTitle>Predictable State</SubTitle>
-      <RadioButton />
+      <FormLabel>Predictable State</FormLabel>
+      <StateList />
     </Wrapper>
   );
 }

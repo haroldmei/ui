@@ -14,7 +14,7 @@
 import { PayloadAction } from '@reduxjs/toolkit';
 import { createSlice } from 'utils/@reduxjs/toolkit';
 import { DynamicState, KnotErrorType } from './types';
-import { State } from 'types/State';
+//import { State } from 'types/State';
 import { Knot } from 'types/Knot';
 
 // The initial state of the GithubRepoForm container

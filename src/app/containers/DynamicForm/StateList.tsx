@@ -5,10 +5,12 @@ import { KnotErrorType } from './types';
 import { Radio } from 'app/components/Radio';
 import State from 'types/State';
 import { TextButton } from './components/TextButton';
-import { selectStates, selectError } from './selectors';
+import { selectStates, selectError, selectId } from './selectors';
+import { StateControl } from './StateControl';
 
-export function RadioButton() {
+export function StateList() {
   const states = useSelector(selectStates);
+  const id = useSelector(selectId);
   const error = useSelector(selectError);
 
   return (
@@ -16,11 +18,12 @@ export function RadioButton() {
       {states?.length > 0 ? (
         <List>
           {states.map(state => (
-            <Radio
+            <StateControl
+              key={state.id}
               id={state.id}
-              label={state.title}
-              className="radio"
-              name="theme"
+              title={state.title}
+              type={state.type}
+              options={state.data}
             />
           ))}
         </List>
