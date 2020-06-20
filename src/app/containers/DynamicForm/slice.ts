@@ -14,7 +14,7 @@
 import { PayloadAction } from '@reduxjs/toolkit';
 import { createSlice } from 'utils/@reduxjs/toolkit';
 import { DynamicState, KnotErrorType } from './types';
-//import { State } from 'types/State';
+import { State } from 'types/State';
 import { Knot } from 'types/Knot';
 
 // The initial state of the GithubRepoForm container
@@ -32,12 +32,19 @@ const dynamicFormSlice = createSlice({
     loadKnot(state) {
       state.loading = true;
       state.error = null;
-      state.states = [];
+      //state.states = [];
     },
     knotLoaded(state, action: PayloadAction<Knot>) {
       const knot = action.payload;
       state.states = knot.states;
       state.id = knot.id;
+      state.loading = false;
+
+      console.log('knotLoaded', state.states);
+    },
+    stateLoaded(state, action: PayloadAction<State[]>) {
+      const stat = action.payload;
+      state.states = stat;
       state.loading = false;
     },
     knotError(state, action: PayloadAction<KnotErrorType>) {

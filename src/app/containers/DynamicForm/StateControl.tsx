@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components/macro';
 import { useSelector, useDispatch } from 'react-redux';
+import { call, put, takeLatest, delay } from 'redux-saga/effects';
+
 import { KnotErrorType } from './types';
 import { Radio } from 'app/components/Radio';
 import { FormLabel } from 'app/components/FormLabel';
@@ -26,26 +28,19 @@ export function StateControl({ id, title, type, options }: Props) {
   const onChangeState = (evt: React.ChangeEvent<HTMLInputElement>) => {
     const value = evt.target.value;
 
-    //console.log(value, id);
     let numberFilled = 0;
-    for (let i = 0; i < states.length; i++) {
-      if (states[i].id == value) {
-        states[i].answer = value;
+    let stat = JSON.parse(JSON.stringify(states));
+    for (let i = 0; i < stat.length; i++) {
+      if (stat[i].id == id) {
+        stat[i].answer = value;
       }
 
-      if (states[i].answer) {
+      if (stat[i].answer) {
         numberFilled = numberFilled + 1;
       }
-
-      console.log(
-        '============= UPDATE STATE ==============',
-        value,
-        states[i].id,
-        states[i].answer,
-        numberFilled,
-        states.length,
-      );
     }
+
+    dispatch(actions.stateLoaded(stat));
 
     if (states.length == numberFilled) {
       dispatch(actions.loadKnot());
@@ -80,7 +75,7 @@ export function StateControl({ id, title, type, options }: Props) {
                   id={state}
                   label={state}
                   onChange={onChangeState}
-                  value={id}
+                  value={state}
                 />
               ))}
             </List>
