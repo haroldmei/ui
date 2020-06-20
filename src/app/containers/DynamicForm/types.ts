@@ -1,11 +1,12 @@
-import { State } from 'types/State';
+//import { State } from 'types/State';
+import { Knot } from 'types/Knot';
 
 /* --- STATE --- */
 export interface DynamicFormState {
   id: string;
   loading: boolean;
   error?: KnotErrorType | null;
-  states: State[];
+  knots: Knot[];
 }
 
 export enum KnotErrorType {

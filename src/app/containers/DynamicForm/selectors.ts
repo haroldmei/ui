@@ -12,9 +12,9 @@ export const selectId = createSelector(
   dynamicFormState => dynamicFormState.id,
 );
 
-export const selectStates = createSelector(
+export const selectKnots = createSelector(
   [selectDomain],
-  dynamicFormState => dynamicFormState.states,
+  dynamicFormState => dynamicFormState.knots,
 );
 
 export const selectLoading = createSelector(

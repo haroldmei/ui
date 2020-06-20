@@ -9,9 +9,8 @@ import { FormLabel } from 'app/components/FormLabel';
 
 import { sliceKey, reducer, actions } from './slice';
 
-import State from 'types/State';
 import { TextButton } from './components/TextButton';
-import { selectStates, selectError } from './selectors';
+import { selectKnots, selectError } from './selectors';
 
 interface Props {
   id: string;
@@ -22,27 +21,34 @@ interface Props {
 
 export function StateControl({ id, title, type, options }: Props) {
   const error = useSelector(selectError);
-  const states = useSelector(selectStates);
+  const states = useSelector(selectKnots);
 
   const dispatch = useDispatch();
   const onChangeState = (evt: React.ChangeEvent<HTMLInputElement>) => {
     const value = evt.target.value;
 
     let numberFilled = 0;
-    let stat = JSON.parse(JSON.stringify(states));
+    let current = JSON.parse(JSON.stringify(states[states.length - 1]));
+
+    console.log('==============stateLoaded KNOT================');
+    console.log(states);
+    console.log(current);
+
+    let stat = current['states'];
     for (let i = 0; i < stat.length; i++) {
       if (stat[i].id == id) {
-        stat[i].answer = value;
+        stat[i].answer = stat[i].data.indexOf(value);
       }
 
       if (stat[i].answer) {
         numberFilled = numberFilled + 1;
       }
     }
+    console.log(stat);
 
-    dispatch(actions.stateLoaded(stat));
+    dispatch(actions.stateLoaded(current));
 
-    if (states.length == numberFilled) {
+    if (stat.length == numberFilled) {
       dispatch(actions.loadKnot());
     }
   };
@@ -55,6 +61,7 @@ export function StateControl({ id, title, type, options }: Props) {
     }
   };
 
+  //console.log(id, title, type);
   if (type == 0) {
     return (
       <Wrapper>

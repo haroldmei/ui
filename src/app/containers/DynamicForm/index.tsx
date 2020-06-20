@@ -10,7 +10,7 @@ import { FormLabel } from 'app/components/FormLabel';
 
 //import { Input } from './components/Input';
 import { TextButton } from './components/TextButton';
-import { StateList } from './StateList';
+import { KnotList } from './KnotList';
 //import { LoadingIndicator } from 'app/components/LoadingIndicator';
 
 export function DynamicForm() {
@@ -36,8 +36,7 @@ export function DynamicForm() {
   return (
     <Wrapper>
       <FormGroup onSubmit={onSubmitForm}></FormGroup>
-      <FormLabel>Predictable State</FormLabel>
-      <StateList />
+      <KnotList />
     </Wrapper>
   );
 }

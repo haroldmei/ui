@@ -20,7 +20,7 @@ import { Knot } from 'types/Knot';
 // The initial state of the GithubRepoForm container
 export const initialState: DynamicState = {
   id: 'root',
-  states: [],
+  knots: [],
   loading: false,
   error: null,
 };
@@ -32,19 +32,21 @@ const dynamicFormSlice = createSlice({
     loadKnot(state) {
       state.loading = true;
       state.error = null;
-      //state.states = [];
+      //state.knots = [];
     },
+    // append a new know
     knotLoaded(state, action: PayloadAction<Knot>) {
       const knot = action.payload;
-      state.states = knot.states;
+      let arrayStates: Knot[] = state.knots;
+      arrayStates.push(knot);
+      state.knots = arrayStates;
       state.id = knot.id;
       state.loading = false;
-
-      console.log('knotLoaded', state.states);
     },
-    stateLoaded(state, action: PayloadAction<State[]>) {
+    // store answer
+    stateLoaded(state, action: PayloadAction<Knot>) {
       const stat = action.payload;
-      state.states = stat;
+      state.knots[state.knots.length - 1] = stat;
       state.loading = false;
     },
     knotError(state, action: PayloadAction<KnotErrorType>) {

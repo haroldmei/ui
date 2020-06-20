@@ -2,15 +2,17 @@ import React from 'react';
 import styled from 'styled-components/macro';
 import { useSelector, useDispatch } from 'react-redux';
 import { KnotErrorType } from './types';
-import { Radio } from 'app/components/Radio';
 import State from 'types/State';
 import { TextButton } from './components/TextButton';
-import { selectStates, selectError, selectId } from './selectors';
+import { selectError, selectId } from './selectors';
 import { StateControl } from './StateControl';
+import { FormLabel } from 'app/components/FormLabel';
+interface Props {
+  id: string;
+  states: any[];
+}
 
-export function StateList() {
-  const states = useSelector(selectStates);
-  const id = useSelector(selectId);
+export function StateList({ id, states }: Props) {
   const error = useSelector(selectError);
 
   return (
@@ -53,5 +55,16 @@ const Wrapper = styled.div`
   ${TextButton} {
     margin: 16px 0;
     font-size: 0.875rem;
+  }
+`;
+
+const FormGroup = styled.form`
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+
+  ${FormLabel} {
+    margin-bottom: 0.25rem;
+    margin-left: 0.125rem;
   }
 `;
