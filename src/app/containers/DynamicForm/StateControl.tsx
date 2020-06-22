@@ -40,11 +40,11 @@ export function StateControl({ id, title, type, options }: Props) {
         stat[i].answer = stat[i].data.indexOf(value);
       }
 
-      if (stat[i].answer) {
+      if (stat[i].answer != null) {
         numberFilled = numberFilled + 1;
       }
     }
-    console.log(stat);
+    console.log(stat, numberFilled);
 
     dispatch(actions.stateLoaded(current));
 

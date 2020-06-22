@@ -38,6 +38,7 @@ const dynamicFormSlice = createSlice({
     knotLoaded(state, action: PayloadAction<Knot>) {
       const knot = action.payload;
       let arrayStates: Knot[] = state.knots;
+      if (state.id == knot.id) console.log('!!! PANIC !!!');
       arrayStates.push(knot);
       state.knots = arrayStates;
       state.id = knot.id;
