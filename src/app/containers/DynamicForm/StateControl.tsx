@@ -5,6 +5,7 @@ import { call, put, takeLatest, delay } from 'redux-saga/effects';
 
 import { KnotErrorType } from './types';
 import { Radio } from 'app/components/Radio';
+import { Check } from 'app/components/Check';
 import { FormLabel } from 'app/components/FormLabel';
 
 import { sliceKey, reducer, actions } from './slice';
@@ -77,6 +78,30 @@ export function StateControl({ id, title, type, options }: Props) {
             <List>
               {options.map(state => (
                 <Radio
+                  key={state}
+                  name={id}
+                  id={state}
+                  label={state}
+                  onChange={onChangeState}
+                  value={state}
+                />
+              ))}
+            </List>
+          ) : error ? (
+            <ErrorText>{repoErrorText(error)}</ErrorText>
+          ) : null}
+        </FormGroup>
+      </Wrapper>
+    );
+  } else if (type == 2) {
+    return (
+      <Wrapper>
+        <FormGroup onSubmit={onSubmitForm}>
+          <FormLabel>{title}</FormLabel>
+          {options?.length > 0 ? (
+            <List>
+              {options.map(state => (
+                <Check
                   key={state}
                   name={id}
                   id={state}

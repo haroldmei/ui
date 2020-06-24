@@ -11,6 +11,7 @@ import { FormLabel } from 'app/components/FormLabel';
 //import { Input } from './components/Input';
 import { TextButton } from './components/TextButton';
 import { KnotList } from './KnotList';
+import { Button } from 'app/components/Button'
 //import { LoadingIndicator } from 'app/components/LoadingIndicator';
 
 export function DynamicForm() {
@@ -37,6 +38,8 @@ export function DynamicForm() {
     <Wrapper>
       <FormGroup onSubmit={onSubmitForm}></FormGroup>
       <KnotList />
+      
+      <Button scale="normal" kind='primary' outline={false}>submit</Button>
     </Wrapper>
   );
 }
