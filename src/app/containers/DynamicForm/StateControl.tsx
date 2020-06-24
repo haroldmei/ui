@@ -5,7 +5,7 @@ import { call, put, takeLatest, delay } from 'redux-saga/effects';
 
 import { KnotErrorType } from './types';
 import { Radio } from 'app/components/Radio';
-import { Check } from 'app/components/Check';
+import { Check } from 'app/components/Input';
 import { FormLabel } from 'app/components/FormLabel';
 
 import { sliceKey, reducer, actions } from './slice';

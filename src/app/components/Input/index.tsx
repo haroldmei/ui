@@ -24,6 +24,83 @@ export const Check = memo(
   },
 );
 
+export const Color = memo(
+  ({ id, label, className, isSelected, ...restOf }: Props) => {
+    return (
+      <Wrapper className={className}>
+        <label htmlFor={id}>{label} </label>
+        <input type="color" id={id} checked={isSelected} {...restOf} />
+      </Wrapper>
+    );
+  },
+);
+
+export const Date = memo(
+  ({ id, label, className, isSelected, ...restOf }: Props) => {
+    return (
+      <Wrapper className={className}>
+        <label htmlFor={id}>{label} </label>
+        <input type="date" id={id} checked={isSelected} {...restOf} />
+      </Wrapper>
+    );
+  },
+);
+
+export const File = memo(
+  ({ id, label, className, isSelected, ...restOf }: Props) => {
+    return (
+      <Wrapper className={className}>
+        <label htmlFor={id}>{label} </label>
+        <input type="file" id={id} checked={isSelected} {...restOf} />
+      </Wrapper>
+    );
+  },
+);
+
+export const Range = memo(
+  ({ id, label, className, isSelected, ...restOf }: Props) => {
+    return (
+      <Wrapper className={className}>
+        <label htmlFor={id}>{label} </label>
+        <input type="range" id={id} checked={isSelected} {...restOf} />
+      </Wrapper>
+    );
+  },
+);
+
+export const Image = memo(
+  ({ id, label, className, isSelected, ...restOf }: Props) => {
+    return (
+      <Wrapper className={className}>
+        <label htmlFor={id}>{label} </label>
+        <input type="image" id={id} checked={isSelected} {...restOf} />
+      </Wrapper>
+    );
+  },
+);
+
+export const Password = memo(
+  ({ id, label, className, isSelected, ...restOf }: Props) => {
+    return (
+      <Wrapper className={className}>
+        <label htmlFor={id}>{label} </label>
+        <input type="password" id={id} checked={isSelected} {...restOf} />
+      </Wrapper>
+    );
+  },
+);
+
+export const Button = memo(
+  ({ id, label, className, isSelected, ...restOf }: Props) => {
+    return (
+      <Wrapper className={className}>
+        <label htmlFor={id}>{label} </label>
+        <input type="button" id={id} checked={isSelected} {...restOf} />
+      </Wrapper>
+    );
+  },
+);
+
 const Wrapper = styled.div`
   input[type='checkbox'] {
     margin: 0;

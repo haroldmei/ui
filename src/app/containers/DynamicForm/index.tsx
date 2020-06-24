@@ -8,11 +8,23 @@ import { dynamicFormSaga } from './saga';
 
 import { FormLabel } from 'app/components/FormLabel';
 
-//import { Input } from './components/Input';
 import { TextButton } from './components/TextButton';
+
+import {
+  Color,
+  Date,
+  File,
+  Range,
+  Image,
+  Password,
+  Button,
+} from 'app/components/Input';
+
 import { KnotList } from './KnotList';
-import { Button } from 'app/components/Button'
+//import { Button } from 'app/components/Button';
+
 //import { LoadingIndicator } from 'app/components/LoadingIndicator';
+import { themes } from 'styles/theme/themes';
 
 export function DynamicForm() {
   useInjectReducer({ key: sliceKey, reducer: reducer });
@@ -38,8 +50,28 @@ export function DynamicForm() {
     <Wrapper>
       <FormGroup onSubmit={onSubmitForm}></FormGroup>
       <KnotList />
-      
-      <Button scale="normal" kind='primary' outline={false}>submit</Button>
+
+      <Color name="name" id="id" label="color" value="value" />
+
+      <Date name="date" id="date" label="date" value="date" />
+
+      <File name="file" id="file" label="file" />
+
+      <Range name="range" id="range" label="range" />
+
+      <Image name="image" id="image" label="image" />
+
+      <Password name="password" id="password" label="password" />
+
+      <Button name="button" id="button" label="button" value="button" />
+
+      {/*<Button scale="normal" kind="primary" outline={true}>
+        submit
+      </Button>*/}
+
+      <TextButton theme={themes.light} type="button">
+        This is a text button
+      </TextButton>
     </Wrapper>
   );
 }
