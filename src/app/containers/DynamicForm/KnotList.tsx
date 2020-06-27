@@ -19,8 +19,6 @@ export function KnotList() {
     dispatch(actions.loadKnot());
     return <Wrapper>Loading first page</Wrapper>;
   } else {
-    //console.log('=== hello world!\n', id, knots);
-    //return <Wrapper>Loading first page</Wrapper>;
     return (
       <Wrapper>
         {knots?.length > 0 ? (

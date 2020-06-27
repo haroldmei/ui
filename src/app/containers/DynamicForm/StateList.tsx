@@ -2,11 +2,11 @@ import React from 'react';
 import styled from 'styled-components/macro';
 import { useSelector, useDispatch } from 'react-redux';
 import { KnotErrorType } from './types';
-import State from 'types/State';
 import { TextButton } from './components/TextButton';
 import { selectError, selectId } from './selectors';
 import { StateControl } from './StateControl';
 import { FormLabel } from 'app/components/FormLabel';
+
 interface Props {
   id: string;
   states: any[];

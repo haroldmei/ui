@@ -7,25 +7,8 @@ import { sliceKey, reducer, actions } from './slice';
 import { dynamicFormSaga } from './saga';
 
 import { FormLabel } from 'app/components/FormLabel';
-
 import { TextButton } from './components/TextButton';
-
-import {
-  Input,
-  Color,
-  Date,
-  File,
-  Range,
-  Image,
-  Password,
-  Button,
-} from 'app/components/Input';
-
 import { KnotList } from './KnotList';
-//import { Button } from 'app/components/Button';
-
-//import { LoadingIndicator } from 'app/components/LoadingIndicator';
-import { themes } from 'styles/theme/themes';
 
 export function DynamicForm() {
   useInjectReducer({ key: sliceKey, reducer: reducer });

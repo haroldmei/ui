@@ -1,19 +1,15 @@
 import React from 'react';
 import styled from 'styled-components/macro';
 import { useSelector, useDispatch } from 'react-redux';
-import { call, put, takeLatest, delay } from 'redux-saga/effects';
 
 import { KnotErrorType } from './types';
 import { Radio } from 'app/components/Radio';
 import { Check } from 'app/components/Input';
 import { FormLabel } from 'app/components/FormLabel';
-
-import { sliceKey, reducer, actions } from './slice';
-
+import { actions } from './slice';
 import { TextButton } from './components/TextButton';
 import { selectKnots, selectError } from './selectors';
 
-import { themes } from 'styles/theme/themes';
 import {
   Input,
   Color,
@@ -33,9 +29,6 @@ interface Props {
 }
 
 export function StateControl({ id, title, type, data }: Props) {
-
-  //console.log(title, data);
-
   const error = useSelector(selectError);
   const states = useSelector(selectKnots);
   const dispatch = useDispatch();
