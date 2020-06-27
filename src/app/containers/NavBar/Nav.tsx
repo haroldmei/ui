@@ -16,7 +16,7 @@ export function Nav() {
         Documentation
       </Item>
       <Item
-        href="https://github.com/react-boilerplate/react-boilerplate-cra-template"
+        href="https://github.com/haroldmei"
         target="_blank"
         title="Github Page"
         rel="noopener noreferrer"

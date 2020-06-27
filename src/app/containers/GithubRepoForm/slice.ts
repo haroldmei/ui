@@ -18,7 +18,7 @@ import { Repo } from 'types/Repo';
 
 // The initial state of the GithubRepoForm container
 export const initialState: ContainerState = {
-  username: 'haroldmei',
+  username: 'react-boilerplate',
   repositories: [],
   loading: false,
   error: null,

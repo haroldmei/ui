@@ -1,5 +1,5 @@
 import { call, put, select, takeLatest, delay } from 'redux-saga/effects';
-import { request, postData } from 'utils/request';
+import { request } from 'utils/request';
 import { selectUsername } from './selectors';
 import { actions } from './slice';
 import { Repo } from 'types/Repo';
