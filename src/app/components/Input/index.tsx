@@ -13,6 +13,10 @@ interface Props extends InputProps {
   isSelected?: boolean;
 }
 
+const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const newValue = e.target.value;
+}
+
 export const Check = memo(
   ({ id, label, className, isSelected, ...restOf }: Props) => {
     return (
@@ -24,78 +28,89 @@ export const Check = memo(
   },
 );
 
-export const Color = memo(
-  ({ id, label, className, isSelected, ...restOf }: Props) => {
+export const Input = memo(
+  ({ id, label, className, ...restOf }: Props) => {
     return (
       <Wrapper className={className}>
         <label htmlFor={id}>{label} </label>
-        <input type="color" id={id} checked={isSelected} {...restOf} />
+        <input type="input" id={id} onChange={handleInputChange} {...restOf} />
+      </Wrapper>
+    );
+  },
+);
+
+export const Color = memo(
+  ({ id, label, className, ...restOf }: Props) => {
+    return (
+      <Wrapper className={className}>
+        <label htmlFor={id}>{label} </label>
+        <input type="color" id={id} onChange={handleInputChange}  {...restOf} />
       </Wrapper>
     );
   },
 );
 
 export const Date = memo(
-  ({ id, label, className, isSelected, ...restOf }: Props) => {
+  ({ id, label, className, ...restOf }: Props) => {
     return (
       <Wrapper className={className}>
         <label htmlFor={id}>{label} </label>
-        <input type="date" id={id} checked={isSelected} {...restOf} />
+        <input type="date" id={id} onChange={handleInputChange}  {...restOf} />
       </Wrapper>
     );
   },
 );
 
 export const File = memo(
-  ({ id, label, className, isSelected, ...restOf }: Props) => {
+  ({ id, label, className, ...restOf }: Props) => {
     return (
       <Wrapper className={className}>
         <label htmlFor={id}>{label} </label>
-        <input type="file" id={id} checked={isSelected} {...restOf} />
+        <input type="file" id={id} onChange={handleInputChange}  {...restOf} />
       </Wrapper>
     );
   },
 );
 
 export const Range = memo(
-  ({ id, label, className, isSelected, ...restOf }: Props) => {
+  ({ id, label, className, ...restOf }: Props) => {
     return (
       <Wrapper className={className}>
         <label htmlFor={id}>{label} </label>
-        <input type="range" id={id} checked={isSelected} {...restOf} />
+        <input type="range" id={id} onChange={handleInputChange}  {...restOf} />
       </Wrapper>
     );
   },
 );
 
 export const Image = memo(
-  ({ id, label, className, isSelected, ...restOf }: Props) => {
+  ({ id, label, className, ...restOf }: Props) => {
     return (
       <Wrapper className={className}>
         <label htmlFor={id}>{label} </label>
-        <input type="image" id={id} checked={isSelected} {...restOf} />
+        <input type="image" id={id} onChange={handleInputChange}  {...restOf} />
       </Wrapper>
     );
   },
 );
 
 export const Password = memo(
-  ({ id, label, className, isSelected, ...restOf }: Props) => {
+  ({ id, label, className, ...restOf }: Props) => {
     return (
       <Wrapper className={className}>
         <label htmlFor={id}>{label} </label>
-        <input type="password" id={id} checked={isSelected} {...restOf} />
+        <input type="password" id={id} onChange={handleInputChange}  {...restOf} />
       </Wrapper>
     );
   },
 );
 
 export const Button = memo(
-  ({ id, label, className, isSelected, ...restOf }: Props) => {
+  ({ id, label, className, ...restOf }: Props) => {
     return (
       <Wrapper className={className}>
         <label htmlFor={id}>{label} </label>
-        <input type="button" id={id} checked={isSelected} {...restOf} />
+        <input type="button" id={id} onChange={handleInputChange}  {...restOf} />
       </Wrapper>
     );
   },
@@ -175,10 +190,10 @@ const Wrapper = styled.div`
         &::before {
           box-shadow: 0 0 0 3px
             ${p =>
-              p.theme.primary.replace(
-                /rgba?(\(\s*\d+\s*,\s*\d+\s*,\s*\d+)(?:\s*,.+?)?\)/,
-                'rgba$1,0.2)',
-              )};
+    p.theme.primary.replace(
+      /rgba?(\(\s*\d+\s*,\s*\d+\s*,\s*\d+)(?:\s*,.+?)?\)/,
+      'rgba$1,0.2)',
+    )};
         }
       }
     }

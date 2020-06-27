@@ -3,6 +3,6 @@ export interface State {
   id: string;
   title: string;
   type: number;
-  data: string[];
+  data: string[] | string;
   answer: string;
 }

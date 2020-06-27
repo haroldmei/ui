@@ -13,27 +13,38 @@ import { sliceKey, reducer, actions } from './slice';
 import { TextButton } from './components/TextButton';
 import { selectKnots, selectError } from './selectors';
 
+import { themes } from 'styles/theme/themes';
+import {
+  Input,
+  Color,
+  Date,
+  File,
+  Range,
+  Image,
+  Password,
+  Button,
+} from 'app/components/Input';
+
 interface Props {
   id: string;
   title: string;
   type: number;
-  options: string[];
+  data: any;
 }
 
-export function StateControl({ id, title, type, options }: Props) {
+export function StateControl({ id, title, type, data }: Props) {
+
+  //console.log(title, data);
+
   const error = useSelector(selectError);
   const states = useSelector(selectKnots);
-
   const dispatch = useDispatch();
+
   const onChangeState = (evt: React.ChangeEvent<HTMLInputElement>) => {
     const value = evt.target.value;
 
     let numberFilled = 0;
     let current = JSON.parse(JSON.stringify(states[states.length - 1]));
-
-    console.log('==============stateLoaded KNOT================');
-    console.log(states);
-    console.log(current);
 
     let stat = current['states'];
     for (let i = 0; i < stat.length; i++) {
@@ -66,7 +77,7 @@ export function StateControl({ id, title, type, options }: Props) {
   if (type == 0) {
     return (
       <Wrapper>
-        <FormLabel>{title}</FormLabel>
+        <FormLabel>Unknown control </FormLabel>
       </Wrapper>
     );
   } else if (type == 1) {
@@ -74,9 +85,9 @@ export function StateControl({ id, title, type, options }: Props) {
       <Wrapper>
         <FormGroup onSubmit={onSubmitForm}>
           <FormLabel>{title}</FormLabel>
-          {options?.length > 0 ? (
+          {data?.length > 0 ? (
             <List>
-              {options.map(state => (
+              {data.map(state => (
                 <Radio
                   key={state}
                   name={id}
@@ -98,9 +109,9 @@ export function StateControl({ id, title, type, options }: Props) {
       <Wrapper>
         <FormGroup onSubmit={onSubmitForm}>
           <FormLabel>{title}</FormLabel>
-          {options?.length > 0 ? (
+          {data?.length > 0 ? (
             <List>
-              {options.map(state => (
+              {data.map(state => (
                 <Check
                   key={state}
                   name={id}
@@ -114,6 +125,78 @@ export function StateControl({ id, title, type, options }: Props) {
           ) : error ? (
             <ErrorText>{repoErrorText(error)}</ErrorText>
           ) : null}
+        </FormGroup>
+      </Wrapper>
+    );
+  } else if (type == 3) {
+    return (
+      <Wrapper>
+        <FormGroup onSubmit={onSubmitForm}>
+          <FormLabel>{title}</FormLabel>
+          <Input name={title} id={title} label={data} value="input" />
+        </FormGroup>
+      </Wrapper>
+    );
+  } else if (type == 4) {
+    return (
+      <Wrapper>
+        <FormGroup onSubmit={onSubmitForm}>
+          <FormLabel>{title}</FormLabel>
+          <Color name={title} id={title} label={data} value="color" />
+        </FormGroup>
+      </Wrapper>
+    );
+  } else if (type == 5) {
+    return (
+      <Wrapper>
+        <FormGroup onSubmit={onSubmitForm}>
+          <FormLabel>{title}</FormLabel>
+          <Date name={title} id={title} label={data} value="date" />
+        </FormGroup>
+      </Wrapper>
+    );
+  } else if (type == 6) {
+    return (
+      <Wrapper>
+        <FormGroup onSubmit={onSubmitForm}>
+          <FormLabel>{title}</FormLabel>
+          <File name={title} id={title} label={data} />
+        </FormGroup>
+      </Wrapper>
+    );
+  } else if (type == 7) {
+    return (
+      <Wrapper>
+        <FormGroup onSubmit={onSubmitForm}>
+          <FormLabel>{title}</FormLabel>
+          <Range name={title} id={title} label={data} />
+        </FormGroup>
+      </Wrapper>
+    );
+  } else if (type == 8) {
+    return (
+      <Wrapper>
+        <FormGroup onSubmit={onSubmitForm}>
+          <FormLabel>{title}</FormLabel>
+          <Image name={title} id={title} label={data} />
+        </FormGroup>
+      </Wrapper>
+    );
+  } else if (type == 9) {
+    return (
+      <Wrapper>
+        <FormGroup onSubmit={onSubmitForm}>
+          <FormLabel>{title}</FormLabel>
+          <Password name={title} id={title} label={data} />
+        </FormGroup>
+      </Wrapper>
+    );
+  } else if (type == 10) {
+    return (
+      <Wrapper>
+        <FormGroup onSubmit={onSubmitForm}>
+          <FormLabel>{title}</FormLabel>
+          <Button name={title} id={title} label={data} value="button" />
         </FormGroup>
       </Wrapper>
     );

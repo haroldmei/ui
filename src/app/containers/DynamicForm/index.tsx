@@ -11,6 +11,7 @@ import { FormLabel } from 'app/components/FormLabel';
 import { TextButton } from './components/TextButton';
 
 import {
+  Input,
   Color,
   Date,
   File,
@@ -50,28 +51,6 @@ export function DynamicForm() {
     <Wrapper>
       <FormGroup onSubmit={onSubmitForm}></FormGroup>
       <KnotList />
-
-      <Color name="name" id="id" label="color" value="value" />
-
-      <Date name="date" id="date" label="date" value="date" />
-
-      <File name="file" id="file" label="file" />
-
-      <Range name="range" id="range" label="range" />
-
-      <Image name="image" id="image" label="image" />
-
-      <Password name="password" id="password" label="password" />
-
-      <Button name="button" id="button" label="button" value="button" />
-
-      {/*<Button scale="normal" kind="primary" outline={true}>
-        submit
-      </Button>*/}
-
-      <TextButton theme={themes.light} type="button">
-        This is a text button
-      </TextButton>
     </Wrapper>
   );
 }

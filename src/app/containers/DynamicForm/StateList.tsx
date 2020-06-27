@@ -25,7 +25,7 @@ export function StateList({ id, states }: Props) {
               id={state.id}
               title={state.title}
               type={state.type}
-              options={state.data}
+              data={state.data}
             />
           ))}
         </List>
