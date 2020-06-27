@@ -3,7 +3,7 @@ import { postData } from 'utils/request';
 
 import { actions } from './slice';
 import { Knot } from 'types/Knot';
-import { selectKnots, selectError } from './selectors';
+import { selectKnots } from './selectors';
 
 export function* getForms() {
   yield delay(500);
@@ -18,8 +18,6 @@ export function* getForms() {
       engineURL,
       states[states.length - 1],
     );
-    console.log('==============KNOT================');
-    console.log(knot);
     yield put(actions.knotLoaded(knot));
   } catch (err) {}
 }

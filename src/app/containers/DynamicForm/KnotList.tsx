@@ -2,16 +2,13 @@ import React from 'react';
 import styled from 'styled-components/macro';
 import { useSelector, useDispatch } from 'react-redux';
 import { KnotErrorType } from './types';
-import { Radio } from 'app/components/Radio';
-import State from 'types/State';
 import { TextButton } from './components/TextButton';
-import { selectKnots, selectError, selectId } from './selectors';
+import { selectKnots, selectError } from './selectors';
 import { StateList } from './StateList';
-import { sliceKey, reducer, actions } from './slice';
+import { actions } from './slice';
 
 export function KnotList() {
   const knots = useSelector(selectKnots);
-  const id = useSelector(selectId);
   const error = useSelector(selectError);
 
   const dispatch = useDispatch();

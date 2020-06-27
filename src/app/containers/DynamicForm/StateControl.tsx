@@ -24,7 +24,7 @@ import {
 interface Props {
   id: string;
   title: string;
-  type: number;
+  type: string;
   data: any;
 }
 
@@ -41,7 +41,7 @@ export function StateControl({ id, title, type, data }: Props) {
 
     let stat = current['states'];
     for (let i = 0; i < stat.length; i++) {
-      if (stat[i].id == id) {
+      if (stat[i].id === id) {
         stat[i].answer = stat[i].data.indexOf(value);
       }
 
@@ -49,11 +49,11 @@ export function StateControl({ id, title, type, data }: Props) {
         numberFilled = numberFilled + 1;
       }
     }
-    console.log(stat, numberFilled);
+    //console.log(stat, numberFilled);
 
     dispatch(actions.stateLoaded(current));
 
-    if (stat.length == numberFilled) {
+    if (stat.length === numberFilled) {
       dispatch(actions.loadKnot());
     }
   };
@@ -61,19 +61,20 @@ export function StateControl({ id, title, type, data }: Props) {
   const onSubmitForm = (evt?: React.FormEvent<HTMLFormElement>) => {
     /* istanbul ignore next  */
     if (evt !== undefined && evt.preventDefault) {
-      console.log('===', evt);
+      //console.log('===', evt);
       evt.preventDefault();
     }
   };
 
-  //console.log(id, title, type);
-  if (type == 0) {
+  //console.log(id, type, typeof type);
+  const t = parseInt(type);
+  if (t === 0) {
     return (
       <Wrapper>
         <FormLabel>Unknown control </FormLabel>
       </Wrapper>
     );
-  } else if (type == 1) {
+  } else if (t === 1) {
     return (
       <Wrapper>
         <FormGroup onSubmit={onSubmitForm}>
@@ -97,7 +98,7 @@ export function StateControl({ id, title, type, data }: Props) {
         </FormGroup>
       </Wrapper>
     );
-  } else if (type == 2) {
+  } else if (t === 2) {
     return (
       <Wrapper>
         <FormGroup onSubmit={onSubmitForm}>
@@ -121,7 +122,7 @@ export function StateControl({ id, title, type, data }: Props) {
         </FormGroup>
       </Wrapper>
     );
-  } else if (type == 3) {
+  } else if (t === 3) {
     return (
       <Wrapper>
         <FormGroup onSubmit={onSubmitForm}>
@@ -130,7 +131,7 @@ export function StateControl({ id, title, type, data }: Props) {
         </FormGroup>
       </Wrapper>
     );
-  } else if (type == 4) {
+  } else if (t === 4) {
     return (
       <Wrapper>
         <FormGroup onSubmit={onSubmitForm}>
@@ -139,7 +140,7 @@ export function StateControl({ id, title, type, data }: Props) {
         </FormGroup>
       </Wrapper>
     );
-  } else if (type == 5) {
+  } else if (t === 5) {
     return (
       <Wrapper>
         <FormGroup onSubmit={onSubmitForm}>
@@ -148,7 +149,7 @@ export function StateControl({ id, title, type, data }: Props) {
         </FormGroup>
       </Wrapper>
     );
-  } else if (type == 6) {
+  } else if (t === 6) {
     return (
       <Wrapper>
         <FormGroup onSubmit={onSubmitForm}>
@@ -157,7 +158,7 @@ export function StateControl({ id, title, type, data }: Props) {
         </FormGroup>
       </Wrapper>
     );
-  } else if (type == 7) {
+  } else if (t === 7) {
     return (
       <Wrapper>
         <FormGroup onSubmit={onSubmitForm}>
@@ -166,7 +167,7 @@ export function StateControl({ id, title, type, data }: Props) {
         </FormGroup>
       </Wrapper>
     );
-  } else if (type == 8) {
+  } else if (t === 8) {
     return (
       <Wrapper>
         <FormGroup onSubmit={onSubmitForm}>
@@ -175,7 +176,7 @@ export function StateControl({ id, title, type, data }: Props) {
         </FormGroup>
       </Wrapper>
     );
-  } else if (type == 9) {
+  } else if (t === 9) {
     return (
       <Wrapper>
         <FormGroup onSubmit={onSubmitForm}>
@@ -184,7 +185,7 @@ export function StateControl({ id, title, type, data }: Props) {
         </FormGroup>
       </Wrapper>
     );
-  } else if (type == 10) {
+  } else if (t === 10) {
     return (
       <Wrapper>
         <FormGroup onSubmit={onSubmitForm}>
@@ -221,14 +222,6 @@ const Wrapper = styled.div`
   ${TextButton} {
     margin: 16px 0;
     font-size: 0.875rem;
-  }
-`;
-
-const RadioButton = styled.div`
-  display: flex;
-
-  .radio {
-    margin-right: 1.5rem;
   }
 `;
 

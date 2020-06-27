@@ -1,11 +1,10 @@
 import React from 'react';
 import styled from 'styled-components/macro';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { KnotErrorType } from './types';
 import { TextButton } from './components/TextButton';
-import { selectError, selectId } from './selectors';
+import { selectError } from './selectors';
 import { StateControl } from './StateControl';
-import { FormLabel } from 'app/components/FormLabel';
 
 interface Props {
   id: string;
@@ -55,16 +54,5 @@ const Wrapper = styled.div`
   ${TextButton} {
     margin: 16px 0;
     font-size: 0.875rem;
-  }
-`;
-
-const FormGroup = styled.form`
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 1rem;
-
-  ${FormLabel} {
-    margin-bottom: 0.25rem;
-    margin-left: 0.125rem;
   }
 `;
