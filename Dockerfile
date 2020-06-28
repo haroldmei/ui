@@ -1,7 +1,7 @@
 FROM node:latest
 ENV NODE_ENV "production"
-ENV PORT 8079
-EXPOSE 8079
+ENV PORT 3000
+EXPOSE 3000
 RUN addgroup mygroup && adduser --disabled-password --ingroup mygroup myuser && mkdir -p /usr/src/app && chown -R myuser /usr/src/app
 
 # Prepare app directory
@@ -16,4 +16,4 @@ RUN yarn install
 COPY . /usr/src/app
 
 # Start the app
-CMD ["/usr/local/bin/npm", "start"]
+CMD ["/usr/local/bin/npm", "run", "start:prod"]
