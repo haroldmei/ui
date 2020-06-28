@@ -7,6 +7,18 @@ node_js:
 cache:
   directories:
     - node_modules
+
+env:
+  - GROUP=haroldmei COMMIT="${TRAVIS_COMMIT}" TAG="${TRAVIS_TAG}" REPO=ui;
+
 script:
   - npm run build
   - npm run test
+
+after_success:
+  - set -e
+  - if [ -z "${DOCKER_PASS}" ]; then echo "Build triggered by external PR. Skipping docker push" && exit 0; fi
+  - docker login -u "${DOCKER_USER}" -p "${DOCKER_PASS}";
+  - ./scripts/build.sh
+  - ./test/container.sh
+  - ./scripts/push.sh
