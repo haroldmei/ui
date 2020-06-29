@@ -10,6 +10,8 @@ services:
     image: haroldmei/backend:master-4a1b75f4
     hostname: backend
     restart: always
+    ports:
+      - '5000:5000'
 
   mongo:
     image: mongo
