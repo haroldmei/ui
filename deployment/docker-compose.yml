@@ -1,13 +1,13 @@
 version: '3.3'
 services:
   ui:
-    image: haroldmei/ui:master-e76b3bfb
+    image: haroldmei/ui:latest
     restart: always
     ports:
       - '80:3000'
 
   backend:
-    image: haroldmei/backend:master-4a1b75f4
+    image: haroldmei/backend:latest
     hostname: backend
     restart: always
     ports:
