@@ -9,5 +9,5 @@ For more information see `LICENSE.md`.
 
 ## Docker build and publish
 
-GROUP=haroldmei COMMIT="master" TAG="latest" REPO=ui ./scripts/build.sh
-GROUP=haroldmei COMMIT="master" TAG="latest" REPO=ui ./scripts/push.sh
+GROUP=haroldmei COMMIT="master" TAG="latest" REPO=ui ./scripts/build.sh  
+GROUP=haroldmei COMMIT="master" TAG="latest" REPO=ui ./scripts/push.sh  
