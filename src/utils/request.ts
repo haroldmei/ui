@@ -58,6 +58,7 @@ export async function postData(url = '', data = {}) {
 
   const fetchResponse = await fetch(url, {
     method: 'POST', // *GET, POST, PUT, DELETE, etc.
+    mode: 'no-cors',
     //cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
     headers: {
       'Content-Type': 'application/json',
