@@ -58,12 +58,10 @@ export async function postData(url = '', data = {}) {
 
   const fetchResponse = await fetch(url, {
     method: 'POST', // *GET, POST, PUT, DELETE, etc.
-    mode: 'no-cors',
-    //cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-    headers: {
-      'Content-Type': 'application/json',
-    },
     body: JSON.stringify(data), // body data type must match "Content-Type" header
+    headers: new Headers({
+      'Content-Type': 'application/json',
+    }),
   });
 
   const response = checkStatus(fetchResponse);

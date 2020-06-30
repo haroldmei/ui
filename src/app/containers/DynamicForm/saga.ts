@@ -7,7 +7,7 @@ import { selectKnots } from './selectors';
 
 export function* getForms() {
   yield delay(500);
-  const engineURL = `http://ec2-13-238-84-181.ap-southeast-2.compute.amazonaws.com:5000/engine/`;
+  const engineURL = `/engine`;
 
   const states = yield select(selectKnots);
 
