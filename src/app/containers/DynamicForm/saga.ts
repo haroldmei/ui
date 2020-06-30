@@ -7,7 +7,7 @@ import { selectKnots } from './selectors';
 
 export function* getForms() {
   yield delay(500);
-  const engineURL = `http://backend:5000/engine`;
+  const engineURL = `http://backend:5000/engine/`;
 
   const states = yield select(selectKnots);
 
