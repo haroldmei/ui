@@ -62,6 +62,8 @@ services:
   mongo:
     image: mongo
     command: --serviceExecutor adaptive
+    networks:
+      - proxy
     hostname: mongo
 
   traefik:
