@@ -1,0 +1,19 @@
+version: '3.3'
+services:
+  ui:
+    image: haroldmei/ui:latest
+    restart: always
+    ports:
+      - '80:3000'
+
+  backend:
+    image: haroldmei/backend:latest
+    hostname: backend
+    restart: always
+    ports:
+      - '5000:5000'
+
+  mongo:
+    image: mongo
+    command: --serviceExecutor adaptive
+    hostname: mongo

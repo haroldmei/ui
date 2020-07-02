@@ -3,17 +3,41 @@ services:
   ui:
     image: haroldmei/ui:latest
     restart: always
-    ports:
-      - '80:3000'
+    labels:
+      - "traefik.enable=true"
+      - "traefik.port=3000"
+      - "traefik.docker.network=ui_default"
+
+    #ports:
+    #  - '80:3000'
 
   backend:
     image: haroldmei/backend:latest
     hostname: backend
     restart: always
-    ports:
-      - '5000:5000'
+    labels:
+      - "traefik.enable=true"
+      - "traefik.port=5000"
+      - "traefik.docker.network=ui_default"
+
+    #ports:
+    #  - '5000:5000'
 
   mongo:
     image: mongo
     command: --serviceExecutor adaptive
     hostname: mongo
+
+  traefik:
+    image: traefik
+    hostname: router
+    command:
+      #- "--log.level=DEBUG"
+      - "--api.insecure=true"
+      - "--providers.docker=true"
+      - "--providers.docker.exposedbydefault=false"
+      - "--entrypoints.web.address=:80"
+    ports:
+      - "80:80"
+      - "8080:8080"
+
