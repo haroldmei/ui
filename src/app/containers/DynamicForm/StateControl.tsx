@@ -3,8 +3,7 @@ import styled from 'styled-components/macro';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { KnotErrorType } from './types';
-import { Radio } from 'app/components/Radio';
-import { Check } from 'app/components/Input';
+import { Check, Radio } from 'app/components/Input';
 import { FormLabel } from 'app/components/FormLabel';
 import { actions } from './slice';
 import { TextButton } from './components/TextButton';

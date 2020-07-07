@@ -1,6 +1,6 @@
 import React from 'react';
 import { FormLabel } from 'app/components/FormLabel';
-import { Radio } from 'app/components/Radio';
+import { Radio } from 'app/components/Input';
 import styled from 'styled-components/macro';
 import { useTranslation } from 'react-i18next';
 import { translations, LanguageKey } from 'locales/i18n';

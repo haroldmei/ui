@@ -26,6 +26,17 @@ export const Check = memo(
   },
 );
 
+export const Radio = memo(
+  ({ id, label, className, isSelected, ...restOf }: Props) => {
+    return (
+      <Wrapper className={className}>
+        <input type="radio" id={id} checked={isSelected} {...restOf} />
+        <label htmlFor={id}>{label}</label>
+      </Wrapper>
+    );
+  },
+);
+
 export const Input = memo(({ id, label, className, ...restOf }: Props) => {
   return (
     <Wrapper className={className}>
