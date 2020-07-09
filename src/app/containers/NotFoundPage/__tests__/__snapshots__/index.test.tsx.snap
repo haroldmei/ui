@@ -120,12 +120,12 @@ Array [
         <div
           className="c4"
         >
-          React Boilerplate
+          Greetings!
         </div>
         <div
           className="c5"
         >
-          Create React App Template
+          Stay focused and keep building. 
         </div>
       </div>
       <nav
@@ -136,7 +136,7 @@ Array [
           href="https://github.com/haroldmei"
           rel="noopener noreferrer"
           target="_blank"
-          title="Documentation Page"
+          title="Documentation Page(in construction)"
         >
           <svg>
             documentation-icon.svg
