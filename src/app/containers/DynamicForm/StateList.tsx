@@ -52,10 +52,3 @@ const List = styled.div``;
 const ErrorText = styled.span`
   color: ${p => p.theme.text};
 `;
-
-const Wrapper = styled.div`
-  ${TextButton} {
-    margin: 16px 0;
-    font-size: 0.875rem;
-  }
-`;
