@@ -5,17 +5,20 @@ import { KnotErrorType } from './types';
 import { TextButton } from './components/TextButton';
 import { selectError } from './selectors';
 import { StateControl } from './StateControl';
+import { PageWrapper } from 'app/components/PageWrapper';
 
 interface Props {
   id: string;
   states: any[];
+  title: string;
 }
 
-export function StateList({ id, states }: Props) {
+export function StateList({ id, states, title }: Props) {
   const error = useSelector(selectError);
 
   return (
-    <Wrapper>
+    <PageWrapper>
+      {title}
       {states?.length > 0 ? (
         <List>
           {states.map(state => (
@@ -31,7 +34,7 @@ export function StateList({ id, states }: Props) {
       ) : error ? (
         <ErrorText>{repoErrorText(error)}</ErrorText>
       ) : null}
-    </Wrapper>
+    </PageWrapper>
   );
 }
 

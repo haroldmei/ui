@@ -21,7 +21,12 @@ export function KnotList() {
         {knots?.length > 0 ? (
           <List>
             {knots.map(knot => (
-              <StateList key={knot.id} id={knot.id} states={knot.states} />
+              <StateList
+                key={knot.id}
+                id={knot.id}
+                title={knot.title}
+                states={knot.states}
+              />
             ))}
           </List>
         ) : error ? (

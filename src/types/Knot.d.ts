@@ -4,4 +4,5 @@ import { State } from 'types/State';
 export interface Knot {
   id: string;
   states: State[];
+  title: string;
 }

@@ -29,16 +29,17 @@ interface Props {
 
 export function StateControl({ id, title, type, data }: Props) {
   const error = useSelector(selectError);
-  const states = useSelector(selectKnots);
+  const knots = useSelector(selectKnots);
   const dispatch = useDispatch();
 
   const onChangeState = (evt: React.ChangeEvent<HTMLInputElement>) => {
     const value = evt.target.value;
 
     let numberFilled = 0;
-    let current = JSON.parse(JSON.stringify(states[states.length - 1]));
 
-    let stat = current['states'];
+    // pick the last knot
+    let currentKnot = JSON.parse(JSON.stringify(knots[knots.length - 1]));
+    let stat = currentKnot['states'];
     for (let i = 0; i < stat.length; i++) {
       if (stat[i].id === id) {
         stat[i].answer = stat[i].data.indexOf(value);
@@ -50,7 +51,7 @@ export function StateControl({ id, title, type, data }: Props) {
     }
     //console.log(stat, numberFilled);
 
-    dispatch(actions.stateLoaded(current));
+    dispatch(actions.stateLoaded(currentKnot));
 
     if (stat.length === numberFilled) {
       dispatch(actions.loadKnot());
@@ -77,7 +78,7 @@ export function StateControl({ id, title, type, data }: Props) {
     return (
       <Wrapper>
         <FormGroup onSubmit={onSubmitForm}>
-          <FormLabel>{title}</FormLabel>
+          <Name>{title}</Name>
           {data?.length > 0 ? (
             <List>
               {data.map(state => (
@@ -101,7 +102,7 @@ export function StateControl({ id, title, type, data }: Props) {
     return (
       <Wrapper>
         <FormGroup onSubmit={onSubmitForm}>
-          <FormLabel>{title}</FormLabel>
+          <Name>{title}</Name>
           {data?.length > 0 ? (
             <List>
               {data.map(state => (
@@ -125,7 +126,7 @@ export function StateControl({ id, title, type, data }: Props) {
     return (
       <Wrapper>
         <FormGroup onSubmit={onSubmitForm}>
-          <FormLabel>{title}</FormLabel>
+          <Name>{title}</Name>
           <Input name={title} id={title} label={data} value="input" />
         </FormGroup>
       </Wrapper>
@@ -134,7 +135,7 @@ export function StateControl({ id, title, type, data }: Props) {
     return (
       <Wrapper>
         <FormGroup onSubmit={onSubmitForm}>
-          <FormLabel>{title}</FormLabel>
+          <Name>{title}</Name>
           <Color name={title} id={title} label={data} value="color" />
         </FormGroup>
       </Wrapper>
@@ -143,7 +144,7 @@ export function StateControl({ id, title, type, data }: Props) {
     return (
       <Wrapper>
         <FormGroup onSubmit={onSubmitForm}>
-          <FormLabel>{title}</FormLabel>
+          <Name>{title}</Name>
           <Date name={title} id={title} label={data} value="date" />
         </FormGroup>
       </Wrapper>
@@ -152,7 +153,7 @@ export function StateControl({ id, title, type, data }: Props) {
     return (
       <Wrapper>
         <FormGroup onSubmit={onSubmitForm}>
-          <FormLabel>{title}</FormLabel>
+          <Name>{title}</Name>
           <File name={title} id={title} label={data} />
         </FormGroup>
       </Wrapper>
@@ -161,7 +162,7 @@ export function StateControl({ id, title, type, data }: Props) {
     return (
       <Wrapper>
         <FormGroup onSubmit={onSubmitForm}>
-          <FormLabel>{title}</FormLabel>
+          <Name>{title}</Name>
           <Range name={title} id={title} label={data} />
         </FormGroup>
       </Wrapper>
@@ -170,7 +171,7 @@ export function StateControl({ id, title, type, data }: Props) {
     return (
       <Wrapper>
         <FormGroup onSubmit={onSubmitForm}>
-          <FormLabel>{title}</FormLabel>
+          <Name>{title}</Name>
           <Image name={title} id={title} label={data} />
         </FormGroup>
       </Wrapper>
@@ -179,7 +180,7 @@ export function StateControl({ id, title, type, data }: Props) {
     return (
       <Wrapper>
         <FormGroup onSubmit={onSubmitForm}>
-          <FormLabel>{title}</FormLabel>
+          <Name>{title}</Name>
           <Password name={title} id={title} label={data} />
         </FormGroup>
       </Wrapper>
@@ -188,7 +189,7 @@ export function StateControl({ id, title, type, data }: Props) {
     return (
       <Wrapper>
         <FormGroup onSubmit={onSubmitForm}>
-          <FormLabel>{title}</FormLabel>
+          <Name>{title}</Name>
           <Button name={title} id={title} label={data} value="button" />
         </FormGroup>
       </Wrapper>
@@ -233,4 +234,9 @@ const FormGroup = styled.form`
     margin-bottom: 0.25rem;
     margin-left: 0.125rem;
   }
+`;
+
+const Name = styled.div`
+  flex: 1;
+  padding: 0.625rem 0;
 `;
