@@ -5,7 +5,7 @@ export function Logo() {
   return (
     <Wrapper>
       <Title>Greetings!</Title>
-      <Description>Stay focused and keep building. </Description>
+      <Description>Stay focused and keep building.</Description>
     </Wrapper>
   );
 }
