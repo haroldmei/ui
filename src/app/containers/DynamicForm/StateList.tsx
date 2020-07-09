@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components/macro';
 import { useSelector } from 'react-redux';
 import { KnotErrorType } from './types';
-import { TextButton } from './components/TextButton';
 import { selectError } from './selectors';
 import { StateControl } from './StateControl';
 import { PageWrapper } from 'app/components/PageWrapper';
