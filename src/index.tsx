@@ -15,6 +15,8 @@ import FontFaceObserver from 'fontfaceobserver';
 import * as serviceWorker from 'serviceWorker';
 
 import 'sanitize.css/sanitize.css';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
 // Initialize languages
 import './locales/i18n';

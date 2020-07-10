@@ -2,7 +2,6 @@
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://backend:5000",
   "dependencies": {
     "@emotion/core": "10.0.28",
     "@emotion/styled": "10.0.27",
@@ -43,6 +42,7 @@
     "react-redux": "7.2.0",
     "react-router-dom": "5.2.0",
     "react-scripts": "3.4.1",
+    "react-slick": "0.26.1",
     "react-test-renderer": "16.13.1",
     "redux-injectors": "1.3.0",
     "redux-saga": "1.1.3",
@@ -50,6 +50,7 @@
     "sanitize.css": "11.0.1",
     "serve": "11.3.2",
     "shelljs": "0.8.4",
+    "slick-carousel": "1.8.1",
     "styled-components": "5.1.1",
     "stylelint": "13.6.1",
     "stylelint-config-recommended": "3.0.0",

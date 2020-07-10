@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { KnotErrorType } from './types';
 import { TextButton } from './components/TextButton';
 import { selectKnots, selectError } from './selectors';
-import { StateList } from './StateList';
+import PreviousNext from './PrevNext';
 import { actions } from './slice';
 
 export function KnotList() {
@@ -16,24 +16,7 @@ export function KnotList() {
     dispatch(actions.loadKnot());
     return <Wrapper>Loading first page</Wrapper>;
   } else {
-    return (
-      <Wrapper>
-        {knots?.length > 0 ? (
-          <List>
-            {knots.map(knot => (
-              <StateList
-                key={knot.id}
-                id={knot.id}
-                title={knot.title}
-                states={knot.states}
-              />
-            ))}
-          </List>
-        ) : error ? (
-          <ErrorText>{repoErrorText(error)}</ErrorText>
-        ) : null}
-      </Wrapper>
-    );
+    return <PreviousNext kn={knots} err={error} />;
   }
 }
 
@@ -45,12 +28,6 @@ export const repoErrorText = (error: KnotErrorType) => {
       return 'An error has occurred!';
   }
 };
-
-const List = styled.div``;
-
-const ErrorText = styled.span`
-  color: ${p => p.theme.text};
-`;
 
 const Wrapper = styled.div`
   ${TextButton} {

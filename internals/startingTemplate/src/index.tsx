@@ -13,7 +13,8 @@ import * as ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import * as serviceWorker from 'serviceWorker';
 import 'sanitize.css/sanitize.css';
-
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 // Import root app
 import { App } from 'app';
 
