@@ -54,7 +54,7 @@ const dynamicFormSlice = createSlice({
       state.loading = false;
     },
     indexLoaded(state, action: PayloadAction<number>) {
-      state.index = state.index;
+      state.index = action.payload;
       // state.loading = false;
     },
   },

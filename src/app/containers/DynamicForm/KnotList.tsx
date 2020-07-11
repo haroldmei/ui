@@ -3,7 +3,7 @@ import styled from 'styled-components/macro';
 import { useSelector, useDispatch } from 'react-redux';
 import { KnotErrorType } from './types';
 import { TextButton } from './components/TextButton';
-import { selectKnots, selectError, selectIndex } from './selectors';
+import { selectKnots, selectError } from './selectors';
 import { actions } from './slice';
 import Slider from 'react-slick';
 import { StateList } from './StateList';
@@ -110,7 +110,7 @@ const ErrorText = styled.span`
   color: ${p => p.theme.text};
 `;
 
-const List = styled.div``;
+//const List = styled.div``;
 
 const Wrapper = styled.div`
   ${TextButton} {
