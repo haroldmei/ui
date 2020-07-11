@@ -7,7 +7,5 @@ Partly licenced under Apache License 2.0
 
 For more information see `LICENSE.md`.
 
-## Docker build and publish
-
 TRAVIS_BRANCH=master TRAVIS_PULL_REQUEST=false TRAVIS_COMMIT=latest GROUP=haroldmei COMMIT="${TRAVIS_COMMIT}" TAG="${TRAVIS_TAG}" REPO=ui ./scripts/build.sh  
 TRAVIS_BRANCH=master TRAVIS_PULL_REQUEST=false TRAVIS_COMMIT=latest GROUP=haroldmei COMMIT="${TRAVIS_COMMIT}" TAG="${TRAVIS_TAG}" REPO=ui ./scripts/push.sh
