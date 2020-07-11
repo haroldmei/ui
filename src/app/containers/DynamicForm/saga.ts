@@ -7,13 +7,13 @@ import { selectKnots } from './selectors';
 
 export function* getForms() {
   yield delay(500);
-  const engineURL = `https://hmei.me/backend/engine`;
 
-  //const engineURL = `http://localhost:5000/engine`;
+  //const engineURL = `https://hmei.me/backend/engine`;
+
+  const engineURL = `http://localhost:5000/engine`;
 
   const states = yield select(selectKnots);
 
-  console.log('========', engineURL);
   try {
     // Call our request helper (see 'utils/request')
     const knot: Knot = yield call(
@@ -21,8 +21,8 @@ export function* getForms() {
       engineURL,
       states[states.length - 1],
     );
-    console.log('========', engineURL);
     yield put(actions.knotLoaded(knot));
+    console.log('Node loaded: ', knot);
   } catch (err) {}
 }
 /**

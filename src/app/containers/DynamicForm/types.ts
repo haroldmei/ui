@@ -4,6 +4,7 @@ import { Knot } from 'types/Knot';
 /* --- STATE --- */
 export interface DynamicFormState {
   id: string;
+  index: number;
   loading: boolean;
   error?: KnotErrorType | null;
   knots: Knot[];

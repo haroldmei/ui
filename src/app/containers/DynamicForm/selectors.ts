@@ -26,3 +26,8 @@ export const selectError = createSelector(
   [selectDomain],
   dynamicFormState => dynamicFormState.error,
 );
+
+export const selectIndex = createSelector(
+  [selectDomain],
+  dynamicFormState => dynamicFormState.index,
+);

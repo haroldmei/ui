@@ -125,7 +125,7 @@ const Wrapper = styled.div`
   }
 `;
 
-//const CheckWrapper = styled.div`
+//const Wrapper = styled.div`
 //  input[type='checkbox'] {
 //    margin: 0;
 //    opacity: 0;

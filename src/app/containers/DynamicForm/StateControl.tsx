@@ -7,7 +7,7 @@ import { Check, Radio } from 'app/components/Input';
 import { FormLabel } from 'app/components/FormLabel';
 import { actions } from './slice';
 import { TextButton } from './components/TextButton';
-import { selectKnots, selectError } from './selectors';
+import { selectKnots, selectIndex, selectError } from './selectors';
 
 import {
   Input,
@@ -30,6 +30,7 @@ interface Props {
 export function StateControl({ id, title, type, data }: Props) {
   const error = useSelector(selectError);
   const knots = useSelector(selectKnots);
+  const index = useSelector(selectIndex);
   const dispatch = useDispatch();
 
   const onChangeState = (evt: React.ChangeEvent<HTMLInputElement>) => {
@@ -38,22 +39,27 @@ export function StateControl({ id, title, type, data }: Props) {
     let numberFilled = 0;
 
     // pick the last knot
-    let currentKnot = JSON.parse(JSON.stringify(knots[knots.length - 1]));
-    let stat = currentKnot['states'];
-    for (let i = 0; i < stat.length; i++) {
-      if (stat[i].id === id) {
-        stat[i].answer = stat[i].data.indexOf(value);
+    let currentKnot = JSON.parse(JSON.stringify(knots[index]));
+    console.log('current pate: ', index);
+    let currStates = currentKnot['states'];
+    for (let i = 0; i < currStates.length; i++) {
+      if (currStates[i].id === id) {
+        let idx = currStates[i].data.indexOf(value);
+        if (currStates[i].type === '2') {
+          console.log('type 2', value, currStates[i].answer);
+          if (currStates[i].answer == null) currStates[i].answer = [];
+          currStates[i].answer.push(idx);
+        } else currStates[i].answer = idx;
       }
 
-      if (stat[i].answer != null) {
+      if (currStates[i].answer != null) {
         numberFilled = numberFilled + 1;
       }
     }
-    //console.log(stat, numberFilled);
-
+    console.log('currentKnot', currentKnot);
     dispatch(actions.stateLoaded(currentKnot));
 
-    if (stat.length === numberFilled) {
+    if (currStates.length === numberFilled) {
       dispatch(actions.loadKnot());
     }
   };
@@ -61,7 +67,6 @@ export function StateControl({ id, title, type, data }: Props) {
   const onSubmitForm = (evt?: React.FormEvent<HTMLFormElement>) => {
     /* istanbul ignore next  */
     if (evt !== undefined && evt.preventDefault) {
-      //console.log('===', evt);
       evt.preventDefault();
     }
   };

@@ -7,15 +7,21 @@ import { StateList } from './StateList';
 import { Knot } from 'types/Knot';
 import { TextButton } from './components/TextButton';
 
+import { actions } from './slice';
+
 type Props = {
   /*props properties*/
   kn: Knot[];
   err: any;
+  dispatch: any;
 };
+
 export default class PreviousNext extends Component<Props> {
   slider: any;
   knots: Knot[];
   error: any;
+  dispatch: any;
+  selectKnots: any;
 
   constructor(props) {
     super(props);
@@ -24,9 +30,14 @@ export default class PreviousNext extends Component<Props> {
     this.knots = props.kn;
     this.error = props.err;
     this.slider = React.createRef();
+    this.dispatch = props.dispatch;
+    this.selectKnots = props.selectKnots;
   }
   next() {
-    this.slider.slickNext();
+    this.dispatch(actions.loadKnot());
+    console.log('check the knot: ', this.knots);
+
+    //this.slider.slickNext();
   }
   previous() {
     this.slider.slickPrev();

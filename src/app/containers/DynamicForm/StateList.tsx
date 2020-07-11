@@ -17,7 +17,6 @@ export function StateList({ id, states, title }: Props) {
 
   return (
     <PageWrapper>
-      {title}
       {states?.length > 0 ? (
         <List>
           {states.map(state => (
