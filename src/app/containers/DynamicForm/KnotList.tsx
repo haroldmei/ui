@@ -8,6 +8,8 @@ import { actions } from './slice';
 import Slider from 'react-slick';
 import { StateList } from './StateList';
 
+// how amazing is this? I can code cloud with my cellphone!
+
 export function KnotList() {
   const knots = useSelector(selectKnots);
   const error = useSelector(selectError);
